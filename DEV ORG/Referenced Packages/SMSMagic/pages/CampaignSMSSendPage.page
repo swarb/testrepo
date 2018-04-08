@@ -1,0 +1,43 @@
+<apex:page controller="smagicbasic.CampaignManageController">
+ <apex:form >
+ <apex:pageMessages /><br/>
+ <apex:pageBlock title="SMS from Campaign" rendered="{!isRegistered}" helpTitle="Help For this Page?" helpUrl="/apex/SMSMagic_Help?from=CampaignSMSSend" >
+     Campaign Name : <apex:outputLabel id="campaginName" value="{!campaignName}" style="margin-left : 72px; width: 165px; font-family: Times New Roman; font-size:15px; " /> <br /><br /> 
+     Select Template For Contact : &nbsp;&nbsp;&nbsp;
+     
+     <apex:selectList id="contactTemplateList" value="{!contactTemplateName}" size="1">
+         <apex:actionSupport event="onchange" rerender="contactTextContent" />
+         <apex:selectOption itemValue="" itemLabel="Choose the template" />
+         <apex:selectOptions value="{!contactTemplateDropDown}" />
+     </apex:selectList>
+     <br /><br />
+     <apex:inputTextarea id="contactTextContent" value="{!contactTextContent}" style="margin-left : 172px;"/><br /><br />
+          
+     Select Template For Lead : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <apex:selectList id="leadTempleteList" value="{!leadTemplateName}" size="1">
+         <apex:actionSupport event="onchange" rerender="leadTextContent" />
+         <apex:selectOption itemValue="" itemLabel="Choose the template" />
+         <apex:selectOptions value="{!leadTemplateDropDown}" />
+     </apex:selectList>
+     <br /><br />
+     <apex:inputTextarea id="leadTextContent" value="{!leadTextContent}" style="margin-left : 172px;"/><br /><br />
+     
+     Filter Campaign Members : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+     <apex:selectList id="filterList" value="{!statusField}" size="1">
+         <apex:selectOption itemValue="Sent" itemLabel="Sent" />
+         <apex:selectOption itemValue="Received" itemLabel="Received" />
+         <apex:selectOption itemValue="Responded" itemLabel="Responded" />
+     </apex:selectList><br /><br /><br />
+
+     Don't Send SMS to <br />
+     Optout members : &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+     <apex:inputCheckbox value="{!isOptOut}"/><br /><br />
+
+      <apex:pageBlockButtons location="bottom">
+         <apex:commandButton id="sendSms" value="Send SMS" action="{!sendSMS}" disabled="{!IF (availableCredits<=0,true, false)}"/>
+         <apex:commandButton id="Cancel" value="Cancel" action="{!cancelSMS}"/>
+      </apex:pageBlockButtons>
+ 
+ </apex:pageBlock>
+ </apex:form>
+</apex:page>

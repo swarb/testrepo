@@ -1,0 +1,188 @@
+<apex:page sidebar="false" controller="SliderClass" extensions="testclass1" >
+<apex:includeScript value="{!URLFOR($Resource.jQueryNew, 'js/jquery-1.3.2.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jQueryNew, 'js/jquery-ui-1.7.1.custom.min.js')}"/>
+    <apex:includeScript value="{!URLFOR($Resource.jQueryNew, 'js/selectToUISlider.jQuery.js')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryNew, 'css/redmond/jquery-ui-1.7.1.custom.css')}"/>
+    <apex:stylesheet value="{!URLFOR($Resource.jQueryNew, 'css/ui.slider.extras.css')}"/>
+    
+    <style>
+    #demo-frame > div.demo { padding: 10px !important;};
+    .ui-slider-vertical.height=200px;
+    </style>
+
+      
+<script>
+       $j = jQuery.noConflict();
+           var myObj = new Object();
+           //function to create slider
+           function createSlider(destination, dispOutput,perPend,minVal,maxVal){
+                $j("#"+destination).slider({ //This line creates a slider on the DIV specified, options are passed arguments, comma separated below
+                    range: false, //This give the slider and top and bottom
+                    min: minVal, //Min value for slider
+                    max: maxVal, //Max value for slider
+                    orientation: 'vertical', // Orientation
+                    values: [0], //Start values for the slider     
+                    animate: true,             
+                    slide: function(event, ui){ 
+                      myObj[destination]=ui.values[0];
+                      //console.log(myObj);
+                        changeTitlecolour(ui.values[0]);
+                      //$j("#"+dispOutput).html(perPend + ui.values[0]);
+                       //calculate();
+                    }
+                });
+                $( "#"+destination ).slider( "option", "animate", true );
+                myObj[destination]= 0;
+             //   $j("#"+dispOutput).html(perPend + $j("#"+destination).slider("values", 0));
+            }
+            
+         $j(function(){
+            createSlider('FutureExpenses', 'FutureExpensesDisp','$',1, {!count});   
+            
+  //          createSlider('FutureExpenses1', 'FutureExpensesDisp1','$',1, {!count});                
+        });
+        
+        function calculate(){
+            var result =  myObj.FutureExpenses +  myObj.OutstandingDebts + myObj.Mortgages + myObj.AnnualIncomeNeeded+myObj.TermReqd;
+            $j('#result').html(result);
+            //console.log(myObj);
+            calculateFutureFinancialNeeds();
+        }
+        
+      
+        function calculateFutureFinancialNeeds(){
+            var FinancialNeedsDisp =  myObj.InflationRate;
+            $j('#FinancialNeedsDisp').html(FinancialNeedsDisp);
+            return FinancialNeedsDisp ;
+        }
+
+        function changeTitlecolour(pointer){
+            SliderClass.getData(pointer, function(result, event){
+                if (event.status) {
+                       //msg = "";
+                       msg = '<table  border="1" style="width: 250px; float: left;background:pink"><tr><th height="100" align="left">';
+                        msg +='Account Owner Name : '+ result.Account_Owner_Name__c+'</th></tr>';
+                         msg +='<tr><th height="100" align="left">';
+                         msg +='Account Balance : '+ result.Amount__c+'</th></tr></table>';
+                        
+                      // msg +='Account Owner Name : '+ result.Account_Owner_Name__c+'<br/><br/>'+'Account Balance : '+ result.Amount__c;
+                       }
+                       $j("#"+'FutureExpensesDisp').html(''+ msg);
+                       //alert('Slider Value :'+msg);
+                }, {escape:true}); 
+                
+                //document.getElementById('tableSlideData').style.display = 'block';
+                document.getElementById('test').style.display = 'block';
+                document.getElementById('FutureExpensesDisp').style.display = 'block';
+                
+                
+              changePicture(pointer);
+                
+            }
+            
+            function changePicture(pointer){
+            SliderClass.getPicture(pointer, function(result, event){
+                if (event.status) {
+                       msg = "";
+                       msg +=result;
+                      }
+                       document.getElementById('pic').src=result;
+                      // alert('Slider Value :'+msg);
+                }, {escape:true}); 
+                
+         //       document.getElementById('tableSlidePic').style.display = 'block';
+              document.getElementById('columnpic').style.display = 'block';
+                
+            }
+            
+    </script>
+
+ <apex:form >
+<apex:outputPanel layout="block" styleClass="ui-widget-content ui-corner-all" style="min-height:800px;border:2px solid blue">
+<html>
+<head>
+
+</head>
+
+<body>
+
+<div  style="display;margin-top:20px;margin-left:20px" class="demo">
+
+<table border="1" style="width: 250px; float: left;background:green">
+
+<tr>
+
+<th height="300">
+<div id="AccNames" style="margin-left:10px">                     
+                           <div id="FutureExpenses" style="width:2%;float:left" />              
+                           <apex:repeat value="{!lst_Account}" var="acc2">
+                                <apex:outputText value="{!acc2.Name}" style="margin-left:10px" /><br/><br/>
+                           </apex:repeat>
+                        </div>
+</th>
+
+
+</tr>
+
+
+</table>
+
+</div>
+<div>
+<table border="0" style="width: 50px; float: left">
+
+<tr>
+
+<th height="300"><b></b></th>
+
+
+</tr>
+
+
+</table>
+</div>
+ 
+
+<div  style="display">
+<div id="test" style="display:none">
+<span id="FutureExpensesDisp" style="float:center"/>
+        
+
+</div>
+</div>
+<div>
+<table border="0" style="width: 50px; float: left">
+
+<tr>
+
+<th height="300"><b></b></th>
+
+
+</tr>
+
+
+</table>
+</div>
+ 
+
+<div  style="display">
+<div id="columnpic" style="display:none">
+<table border="1" style="width: 250px; float: left">
+
+<tr>
+
+<th height="300">
+<img id="pic" style="float:center"/>
+</th>
+
+</tr>
+
+</table>
+</div>
+</div>
+</body>
+</html>
+
+</apex:outputPanel>
+ </apex:form>
+</apex:page>

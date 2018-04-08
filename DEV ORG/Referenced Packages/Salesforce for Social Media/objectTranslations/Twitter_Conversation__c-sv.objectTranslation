@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>Twitter-konversationen</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>false</plural>
+        <value>Twitter-konversation</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>Twitter-konversation</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>Twitter-konversationerna</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>true</plural>
+        <value>Twitter-konversationerna</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>Twitter-konversationer</value>
+    </caseValues>
+    <fields>
+        <label>Företag</label>
+        <name>Account__c</name>
+        <relationshipLabel>Twitter-konversationer</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Skaparens externa id</label>
+        <name>Author_External_Id__c</name>
+    </fields>
+    <fields>
+        <label>Författares namn</label>
+        <name>Author_Name__c</name>
+    </fields>
+    <fields>
+        <label>Fullständigt namn</label>
+        <name>Author_Real_Name__c</name>
+    </fields>
+    <fields>
+        <label>Författares URL</label>
+        <name>Author_URL__c</name>
+    </fields>
+    <fields>
+        <label>Kundcase länkikon</label>
+        <name>Case_Created__c</name>
+    </fields>
+    <fields>
+        <label>Kundcase</label>
+        <name>Case__c</name>
+        <relationshipLabel>Twitter-konversationer</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Chatter-inlägg</label>
+        <name>Chatter_Post_Link__c</name>
+    </fields>
+    <fields>
+        <label>Chatter-inlägg-id</label>
+        <name>Chatter_Post__c</name>
+    </fields>
+    <fields>
+        <label>Kontakt länkikon</label>
+        <name>Contact_Created__c</name>
+    </fields>
+    <fields>
+        <label>Kontakt</label>
+        <name>Contact__c</name>
+        <relationshipLabel>Twitter-konversationer</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Innehåll</label>
+        <name>Content__c</name>
+    </fields>
+    <fields>
+        <label>Direktmeddelande</label>
+        <name>Direct_Message__c</name>
+    </fields>
+    <fields>
+        <label>Hämtningsnamn</label>
+        <name>Download_Name__c</name>
+        <relationshipLabel>Twitter-konversationer</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Facebooksida</label>
+        <name>Facebook_Page__c</name>
+        <relationshipLabel>Konversationer</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Antal efterföljare</label>
+        <name>Follower_Count__c</name>
+    </fields>
+    <fields>
+        <label>Antal följningar</label>
+        <name>Following_Count__c</name>
+    </fields>
+    <fields>
+        <label>Geografiska koordinater</label>
+        <name>Geo_Coordinates__c</name>
+    </fields>
+    <fields>
+        <label>Avatarikon</label>
+        <name>Image__c</name>
+    </fields>
+    <fields>
+        <label>Som svar till status-ID</label>
+        <name>In_Reply_To_Status_Id__c</name>
+    </fields>
+    <fields>
+        <label>Som svar till användar-ID</label>
+        <name>In_Reply_To_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>Är direktmeddelande</label>
+        <name>IsDirectMessage__c</name>
+    </fields>
+    <fields>
+        <label>Är geo aktiverat</label>
+        <name>Is_Geo_Enabled__c</name>
+    </fields>
+    <fields>
+        <label>Leads länkikon</label>
+        <name>Lead_Created__c</name>
+    </fields>
+    <fields>
+        <label>Lead</label>
+        <name>Lead__c</name>
+        <relationshipLabel>Twitter-konversationer</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Gillar</label>
+        <name>Likes_Link__c</name>
+    </fields>
+    <fields>
+        <label>Antal gillar</label>
+        <name>Likes__c</name>
+    </fields>
+    <fields>
+        <label>Länk</label>
+        <name>Link__c</name>
+    </fields>
+    <fields>
+        <label>Meddelande</label>
+        <name>Message__c</name>
+    </fields>
+    <fields>
+        <label>Negativa tweets</label>
+        <name>Negative_Tweets__c</name>
+    </fields>
+    <fields>
+        <label>Neutrala tweets</label>
+        <name>Neutral_Tweets__c</name>
+    </fields>
+    <fields>
+        <help><!-- Creates a new Case for this Conversation regardles of its relationship to other Conversations and Cases --></help>
+        <label>Nytt kundcase</label>
+        <name>New_Case__c</name>
+    </fields>
+    <fields>
+        <label>Ursprungsdatum</label>
+        <name>Origin_Date__c</name>
+    </fields>
+    <fields>
+        <label>Ursprung</label>
+        <name>Origin_Icon__c</name>
+    </fields>
+    <fields>
+        <label>Ursprungsvärde</label>
+        <name>Origin__c</name>
+        <picklistValues>
+            <masterLabel>Facebook</masterLabel>
+            <translation><!-- Facebook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Twitter</masterLabel>
+            <translation><!-- Twitter --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Överordnad konversation</label>
+        <name>ParentConversation__c</name>
+        <relationshipLabel>Konversationstråd</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Överordnad</label>
+        <name>Parent__c</name>
+        <relationshipLabel>Twitter-konversationer</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Platskoordinater</label>
+        <name>Place_Coordinates__c</name>
+    </fields>
+    <fields>
+        <label>Plats</label>
+        <name>Place__c</name>
+    </fields>
+    <fields>
+        <label>Positiva tweets</label>
+        <name>Positive_Tweets__c</name>
+    </fields>
+    <fields>
+        <label>Datum publicerat</label>
+        <name>Published_Date__c</name>
+    </fields>
+    <fields>
+        <label>Besvarad status</label>
+        <name>Replied_Status__c</name>
+    </fields>
+    <fields>
+        <label>Besvarad användare</label>
+        <name>Replied_User__c</name>
+    </fields>
+    <fields>
+        <label>Lösnings länkikon</label>
+        <name>Solution_Created__c</name>
+    </fields>
+    <fields>
+        <label>Lösning</label>
+        <name>Solution__c</name>
+        <relationshipLabel>Twitter-konversationer</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Status</label>
+        <name>Status__c</name>
+        <picklistValues>
+            <masterLabel>Actioned</masterLabel>
+            <translation><!-- Actioned --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Deleted</masterLabel>
+            <translation><!-- Deleted --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ignored</masterLabel>
+            <translation><!-- Ignored --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mark as reviewed</masterLabel>
+            <translation><!-- Mark as reviewed --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>New</masterLabel>
+            <translation><!-- New --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound @reply</masterLabel>
+            <translation><!-- Outbound @reply --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound Direct Message</masterLabel>
+            <translation><!-- Outbound Direct Message --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Solved by Community</masterLabel>
+            <translation><!-- Solved by Community --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Tweet-känsla</label>
+        <name>Tweet_Sentiment__c</name>
+    </fields>
+    <fields>
+        <label>Twitter-ID</label>
+        <name>TwitterID__c</name>
+    </fields>
+    <fields>
+        <label>Twitter-konto</label>
+        <name>Twitter_Account__c</name>
+        <relationshipLabel>Twitter-konversationer</relationshipLabel>
+    </fields>
+    <fields>
+        <label>ID-nummer för Twitter</label>
+        <name>Twitter_Id_Number__c</name>
+    </fields>
+    <fields>
+        <label>Profilbild</label>
+        <name>Twitter_Image__c</name>
+    </fields>
+    <fields>
+        <label>Twitter-plats</label>
+        <name>Twitter_Location__c</name>
+    </fields>
+    <fields>
+        <label>Twitter-sökning</label>
+        <name>Twitter_Search__c</name>
+        <relationshipLabel>Twitter-konversationer</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Twitter-källa</label>
+        <name>Twitter_Source__c</name>
+    </fields>
+    <fields>
+        <help><!-- The API source of the record.  This can be @Replies, Messages, or Search --></help>
+        <label>Typ</label>
+        <name>Type__c</name>
+        <picklistValues>
+            <masterLabel>@Replies</masterLabel>
+            <translation><!-- @Replies --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Comment</masterLabel>
+            <translation><!-- Comment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Conversation</masterLabel>
+            <translation><!-- Conversation --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Direct Message</masterLabel>
+            <translation><!-- Direct Message --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound Direct Message</masterLabel>
+            <translation><!-- Outbound Direct Message --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound comment</masterLabel>
+            <translation><!-- Outbound comment --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound post</masterLabel>
+            <translation><!-- Outbound post --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Outbound reply</masterLabel>
+            <translation><!-- Outbound reply --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Registered Account</masterLabel>
+            <translation><!-- Registered Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Search</masterLabel>
+            <translation><!-- Search --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Wall Post</masterLabel>
+            <translation><!-- Wall Post --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Uppdaterat datum</label>
+        <name>Updated_Date__c</name>
+    </fields>
+    <fields>
+        <label>Användares info</label>
+        <name>User_Bio__c</name>
+    </fields>
+    <fields>
+        <label>Användares skapandedatum</label>
+        <name>User_Creation_Date__c</name>
+    </fields>
+    <fields>
+        <label>Användares senaste tweet</label>
+        <name>User_Last_tweet__c</name>
+    </fields>
+    <fields>
+        <label>Användare gillar</label>
+        <name>User_Likes__c</name>
+    </fields>
+    <fields>
+        <label>Användares statusantal</label>
+        <name>User_Status_count__c</name>
+    </fields>
+    <gender>Neuter</gender>
+    <layouts>
+        <layout>Conversation Layout</layout>
+        <sections>
+            <label><!-- Author Info --></label>
+            <section>Author Info</section>
+        </sections>
+        <sections>
+            <label><!-- Content --></label>
+            <section>Content</section>
+        </sections>
+        <sections>
+            <label><!-- Conversation Origin --></label>
+            <section>Conversation Origin</section>
+        </sections>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Disposition --></label>
+            <section>Disposition</section>
+        </sections>
+        <sections>
+            <label><!-- Reply Details --></label>
+            <section>Reply Details</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Namn på Twitter-konversation</nameFieldLabel>
+    <webLinks>
+        <label>Lägg till i kampanj</label>
+        <name>Add_To_Campaign</name>
+    </webLinks>
+    <webLinks>
+        <label>Lägg till i kampanj</label>
+        <name>Add_to_Campaign_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Skapa kundcase</label>
+        <name>Create_Case</name>
+    </webLinks>
+    <webLinks>
+        <label>Skapa kontakt</label>
+        <name>Create_Contact</name>
+    </webLinks>
+    <webLinks>
+        <label>Skapa kontakt</label>
+        <name>Create_Contact_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Skapa kunskap</label>
+        <name>Create_Knowledge</name>
+    </webLinks>
+    <webLinks>
+        <label>Skapa lead</label>
+        <name>Create_Lead</name>
+    </webLinks>
+    <webLinks>
+        <label>Skapa lead</label>
+        <name>Create_Lead_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Skapa ett personkonto</label>
+        <name>Create_Person_Account</name>
+    </webLinks>
+    <webLinks>
+        <label>Skapa ett personkonto</label>
+        <name>Create_Person_Account_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Ta bort ignorerad</label>
+        <name>Delete_Ignored</name>
+    </webLinks>
+    <webLinks>
+        <label>Skapa kundcase</label>
+        <name>Escalate_to_Case</name>
+    </webLinks>
+    <webLinks>
+        <label>Hämta information om författare</label>
+        <name>Get_Author_Info</name>
+    </webLinks>
+    <webLinks>
+        <label>Hämta information om författare</label>
+        <name>Get_Author_Info_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Hämta konversation</label>
+        <name>Get_Conversation</name>
+    </webLinks>
+    <webLinks>
+        <label>Hämta konversation</label>
+        <name>Get_Conversation_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Hämta fler tweets</label>
+        <name>Get_More_Tweets</name>
+    </webLinks>
+    <webLinks>
+        <label>Ignorera</label>
+        <name>Ignore</name>
+    </webLinks>
+    <webLinks>
+        <label>Ignorera</label>
+        <name>Ignore_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Markera som granskad</label>
+        <name>Mark_as_reviewed</name>
+    </webLinks>
+    <webLinks>
+        <label>Markera som granskad</label>
+        <name>Mark_as_reviewed_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Tumme ned</label>
+        <name>Negative_Sentiment_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Neutral</label>
+        <name>Neutral_Sentiment_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Tumme upp</label>
+        <name>Positive_Sentiment_Detail</name>
+    </webLinks>
+    <webLinks>
+        <label>Posta på Chatter</label>
+        <name>Post_to_Chatter</name>
+    </webLinks>
+    <webLinks>
+        <label>Skapa kunskap</label>
+        <name>Promote_to_Knowledge</name>
+    </webLinks>
+    <webLinks>
+        <label>Ta bort från Facebook</label>
+        <name>Remove_from_Facebook</name>
+    </webLinks>
+    <webLinks>
+        <label><!-- Reply --></label>
+        <name>Reply</name>
+    </webLinks>
+    <webLinks>
+        <label>Skicka ett tweet</label>
+        <name>Send_A_Tweet</name>
+    </webLinks>
+    <webLinks>
+        <label>Skicka Twitter-meddelande</label>
+        <name>Send_Twitter_Message</name>
+    </webLinks>
+    <webLinks>
+        <label>Löst av allmänheten</label>
+        <name>Solved_By_Community</name>
+    </webLinks>
+    <webLinks>
+        <label>Löst av allmänheten</label>
+        <name>Solved_By_Community_Massive</name>
+    </webLinks>
+</CustomObjectTranslation>

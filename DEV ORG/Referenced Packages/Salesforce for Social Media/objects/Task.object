@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <webLinks>
+        <fullName>Send_Twitter_Message</fullName>
+        <availability>online</availability>
+        <displayType>massActionButton</displayType>
+        <linkType>javascript</linkType>
+        <masterLabel>Reply</masterLabel>
+        <openType>onClickJavaScript</openType>
+        <protected>false</protected>
+        <requireRowSelection>false</requireRowSelection>
+        <url>var id = null;
+var url = window.location.href;
+var status = &apos;{!Twitter_Conversation__c.Status__c}&apos;;
+
+if (status == &apos;Deleted&apos;) {
+	alert(&apos;{!$Label.CONVERSATION_IS_DELETED_GENERIC}&apos;);
+}
+else {
+	// get the object id from the current url
+	var id_regex = /(\/|\?|&amp;)id=([^&amp;]*)/i;
+	var match_result = id_regex.exec(url);
+	if (match_result != null) {
+		id = match_result[2];
+	} else {
+		var std_url_regex = /salesforce\.com\/([^&amp;\/=?]*)/i;
+		var std_url_match_result = std_url_regex.exec(url);
+		if (std_url_match_result != null) {
+			id = std_url_match_result[1];
+		}
+	}
+
+	// go to the message form with the obtained id
+	if (id != null) {
+		var popupHeight = 450;
+		var popupWidth = 500;
+		var popupTop, popupLeft;
+		if (window.screenX) {
+		   popupLeft = window.screenX + (window.outerWidth - popupWidth) / 2;
+		   popupTop = window.screenY + (window.outerHeight - popupHeight) / 2;
+		}
+		else {
+		   popupLeft = window.screenLeft + (window.outerWidth - popupWidth) / 2;
+		   popupTop = window.screenTop + (window.outerHeight - popupHeight) / 2;
+		}
+		var popupSpecs =
+			&apos;width=&apos;+ popupWidth + &apos;,&apos; +
+			&apos;height=&apos; + popupHeight + &apos;,&apos; +
+			&apos;left=&apos; + popupLeft + &apos;,&apos; +
+			&apos;top=&apos; + popupTop+ &apos;,&apos; +
+			&apos;toolbar=no,&apos; +
+			&apos;titlebar=no,&apos; +
+			&apos;location=no,&apos; +
+			&apos;directories=no,&apos; +
+			&apos;status=no,&apos; +
+			&apos;menubar=no,&apos; +
+			&apos;scrollbars=yes,&apos; +
+			&apos;copyhistory=yes,&apos; +
+			&apos;resizable=yes&apos;;
+		window.open(
+			&apos;/apex/sf4twitter__TwitterMessage?id=&apos; + id + &apos;&amp;retURL=&apos;+encodeURIComponent(window.location),
+			&apos;_blank&apos;,
+		   popupSpecs);
+	}
+}</url>
+    </webLinks>
+</CustomObject>

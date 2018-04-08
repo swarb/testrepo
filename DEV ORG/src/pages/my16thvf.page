@@ -1,0 +1,8 @@
+<apex:page controller="customset">
+<apex:form >
+<!-- <apex:inputText value="{!b}"/> -->
+<apex:commandButton action="{!foo}" value="click me"/>
+
+</apex:form>
+This id the value of custom settings-->{!a}
+</apex:page>

@@ -1,0 +1,19 @@
+<!-- page NewContact_Step1 (uses custom duplicatePreventionWizardController) -->
+<apex:page standardController="Contact" extensions="duplicatePreventionWizardController">
+<apex:form >
+<apex:pageBlock >
+<apex:pageBlockButtons >
+<!-- Save button invokes 'searchForDuplicates' action, it redirects user to the second page
+-->
+<apex:commandButton action="{!searchForDuplicates}" value="Save"/>
+<!-- Cancel button invokes standard 'cancel' action -->
+<apex:commandButton action="{!cancel}" value="Cancel" immediate="true"/>
+</apex:pageBlockButtons>
+<!-- fields to input Contact FirstName ane LastName -->
+<apex:pageBlockSection title="Contact Information">
+<apex:inputField value="{!contact.firstName}"/>
+<apex:inputField value="{!contact.lastName}"/>
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

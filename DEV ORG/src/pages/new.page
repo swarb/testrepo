@@ -1,0 +1,20 @@
+<apex:page standardController="Account" recordSetVar="acct">
+{!$Label.testlabel1}
+    <apex:form >
+    <apex:pageBlock title="Edit Account: {!Account.Name}">
+        <apex:pageBlockSection title="Account Details" columns="1">
+            <apex:inputField value="{!Account.Name}" taborderhint="1"/>
+            <apex:inputField value="{!Account.Website}" taborderhint="2"/>
+            <apex:inputField value="{!Account.Industry}" taborderhint="4"/>
+            <apex:inputField value="{!Account.AnnualRevenue}" taborderhint="1"/>
+            <apex:inputCheckbox title="newlabel" />
+        </apex:pageBlockSection>
+        <apex:pageBlockButtons >
+        <apex:commandButton action="{!save}" value="Save Me!"/>
+        </apex:pageBlockButtons>
+        <apex:dataTable value="{!acct}" var="var1">
+        <apex:column value="{!var1.Name}" headerValue="Account Name"/>
+        </apex:dataTable>
+    </apex:pageBlock>
+    </apex:form>
+</apex:page>

@@ -1,0 +1,4 @@
+<apex:page >
+<apex:iframe src="https://peoplesoft" scrolling="true">
+</apex:iframe>
+</apex:page>

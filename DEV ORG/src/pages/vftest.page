@@ -1,0 +1,12 @@
+<apex:page standardController="case" recordSetVar="case">
+<apex:outputText value="<b>swarnava</b>" escape="false"/>
+<apex:pageBlock title="My Content">
+
+        <apex:pageBlockTable value="{!case}" var="item">
+
+            <apex:column value="{!item.CaseNumber}"/> 
+            <apex:column headerValue="header"><apex:outputText value="<b>swarnava</b>" escape="false"/></apex:column>
+        </apex:pageBlockTable> 
+
+    </apex:pageBlock> 
+</apex:page>

@@ -1,0 +1,43 @@
+<apex:page showHeader="false" sidebar="false" >
+<html>
+   
+       <script src="http://code.jquery.com/jquery-1.4.2.min.js"></script>
+       <script src="jquery.dnd-file-upload.js" ></script>
+       <script src="jquery.client.js" ></script>
+        <script type="text/javascript">
+            $.fn.dropzone.newFilesDropped = function() {
+                // new files have been dropped
+            };
+
+            $.fn.dropzone.uploadStarted = function(fileIndex, file) {
+                // upload of file with given index has started
+            };
+
+            $.fn.dropzone.uploadFinished = function(fileIndex, file, time) {
+                // upload of file with given index has finished; upload took *time* mili seconds
+            };
+
+            $.fn.dropzone.fileUploadProgressUpdated = function(fileIndex, file, newProgress) {
+                // progress of given file has changed to *newProgress* percent
+            };
+            
+            $.fn.dropzone.fileUploadSpeedUpdated = function(fileIndex, file, KBperSecond) {
+                // upload speed of given file has changed to *KBPerSecond* KB/s
+            };
+
+            $(document).ready(function(){
+                $("#drop-div").dropzone(
+                    {
+                        url : "https://login.salesforce.com"
+                    }
+                );
+            });
+        </script>
+   
+    <body>
+        <div id="drop-div" style="width: 200px; height: 200px; border: thin solid black;">
+            Drop files here!
+        </div>
+    </body>
+</html>
+</apex:page>

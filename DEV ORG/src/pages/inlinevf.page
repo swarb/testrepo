@@ -1,0 +1,4 @@
+<apex:page standardController="Account">
+<apex:outputText value="The Account Is  "/>
+  <apex:iframe src="/{!Account.Id}"   />
+</apex:page>

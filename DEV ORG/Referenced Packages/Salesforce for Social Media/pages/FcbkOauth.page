@@ -1,0 +1,38 @@
+<apex:page controller="sf4twitter.FcbkOauthController">
+
+<apex:outputPanel rendered="{!ISBLANK(error)}">
+
+	<apex:outputPanel rendered="{!NOT(ISBLANK(revoke))}">
+		<apex:form >
+			<apex:actionFunction name="revoke" action="{!revoke}" />
+		</apex:form>
+		<script>
+			revoke();
+		</script>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(ISBLANK(revoke), code == '' && retURL != null)}">
+		<apex:form >
+			<apex:actionFunction name="authorize" action="{!authorize}" />
+		</apex:form>
+		<script>
+			authorize();
+		</script>
+	</apex:outputPanel>
+	
+	<apex:outputPanel rendered="{!AND(ISBLANK(revoke), code != '' && accessToken == '')}">
+		<apex:form >
+			<apex:actionFunction name="getAccessToken" action="{!getAccessToken}" />
+		</apex:form>
+		<script>
+			getAccessToken();
+		</script>
+	</apex:outputPanel>
+	
+</apex:outputPanel>
+
+<c:TwitterErrorMessage msgTitle="{!$Label.TWITTER_ERROR}"
+	msg="{!error}" retUrl="{!retUrl}"
+	rendered="{!NOT(ISBLANK(error))}" />
+
+</apex:page>

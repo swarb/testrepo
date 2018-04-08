@@ -1,0 +1,9 @@
+<aura:component >
+    <aura:attribute name="test1"  type="Integer"/>
+    <aura:attribute name="test2"  type="Integer"/>
+    <aura:attribute name="test3"  type="Integer"/>
+    <ui:inputNumber label="Number 1:" value="{!v.test1}"/>
+    <ui:inputNumber label="Number 2:" value="{!v.test2}"/>
+    <ui:outputNumber value="{!v.test3}"/>
+    <lightning:button label="Submit" onclick="{!c.handleClick }" />
+</aura:component>

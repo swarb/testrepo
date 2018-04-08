@@ -1,0 +1,5 @@
+<apex:page controller="testdelete">
+<apex:form >
+<apex:commandbutton action="{!getdodelete}" value="delete"/>
+</apex:form>
+</apex:page>

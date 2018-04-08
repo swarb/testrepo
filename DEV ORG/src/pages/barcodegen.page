@@ -1,0 +1,237 @@
+<apex:page showHeader="false" sidebar="false"  contentType="text/html">
+<apex:form >
+<head><title>bwip-js - demo</title>
+<apex:includeScript value="{!URLFOR($Resource.BarCodeJS3, '/lib/bwip.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.BarCodeJS3, '/lib/jquery-1.4.1.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.BarCodeJS3, '/lib/symdesc.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.BarCodeJS3, '/lib/needyoffset.js')}"/>
+<apex:includeScript value="{!URLFOR($Resource.BarCodeJS3, '/lib/canvas.js')}"/>
+<style type="text/css">
+#menu th {
+    text-align:         right;
+    padding-right:      1.5ex;
+}
+#menu span.button {
+    border:             1px solid #000;
+    background-color:   #eee;
+    display:            inline-block;
+    height:             9px;
+    width:              15px;
+    position:           relative;
+    background-repeat:  no-repeat;
+    background-position:50% 50%;
+}
+#menu span.button.up {
+    top:                -5px;
+    left:               -5px;
+    background-image:   url("{!URLFOR($Resource.BarCodeJS3, '/lib/up-arrow.gif')}");
+}
+#menu span.button.dn {
+    top:                6px;
+    left:               -26px;
+    background-image:   url("{!URLFOR($Resource.BarCodeJS3, '/lib/dn-arrow.gif')}");
+}
+#menu span.button:hover {
+    background-color:   gold;
+    border:             1px solid orange;
+}
+#scale {
+    height:             16px;
+    width:              3ex;
+}
+</style>
+
+<script type="text/javascript">
+$(document).ready(function() {
+    // Sort the symbols
+    symdesc.pop();  // remove the null last entry
+    symdesc.sort(function(a,b) {
+             return (a.desc < b.desc ? -1 : 1);
+        });
+
+    // Create the select list
+    var sel = document.getElementById('symbol');
+    for (var i = 0; i < symdesc.length; i++) {  // last entry is null
+        var opt = document.createElement('option');
+        opt.text = symdesc[i].desc;
+        opt.value = i;
+        sel.add(opt, null);
+    }
+
+    $(sel).change(function(ev) {
+            var sym = symdesc[this.selectedIndex];
+            if (sym) {
+                $('#symtext').val(sym.text);
+                $('#symopts').val(sym.opts);
+            } else {
+                $('#symtext').val('');
+                $('#symopts').val('');
+            }
+            $('#symaltx').val('');
+        })
+        .trigger('change')
+        ;
+
+
+
+    $('#menu span.button.up')
+        .click(function(ev) {
+            var inp = $('#scale');
+            var val = (parseFloat(inp.val())||1)+1;
+            inp.val(val > 10 ? 10 : val);
+            ev.stopImmediatePropagation();
+            ev.preventDefault();
+        })
+        .dblclick(function(ev) {
+            ev.stopImmediatePropagation();
+            ev.preventDefault();
+        })
+        .mousedown(function(ev) {
+            ev.stopImmediatePropagation();
+            ev.preventDefault();
+        })
+        ;
+    $('#menu span.button.dn')
+        .click(function(ev) {
+            var inp = $('#scale');
+            var val = (parseFloat(inp.val())||1)-1;
+            inp.val(val <= 0 ? 1 : val);
+            ev.stopImmediatePropagation();
+            ev.preventDefault();
+        })
+        .dblclick(function(ev) {
+            ev.stopImmediatePropagation();
+            ev.preventDefault();
+        })
+        .mousedown(function(ev) {
+            ev.stopImmediatePropagation();
+            ev.preventDefault();
+        })
+        ;
+
+});
+
+function render(){
+alert('inside render()');
+    var elt = symdesc[$('#symbol')[0].selectedIndex];
+    var text = $('#symtext').val().replace(/^\s+/,'').replace(/\s+$/,'');
+    var altx = $('#symaltx').val().replace(/^\s+/,'').replace(/\s+$/,'');
+    var opts = $('#symopts').val().replace(/^\s+/,'').replace(/\s+$/,'');
+alert('inside 1');
+    var bw = new BWIPJS;
+alert('inside 2');
+    // Convert the options to a dictionary object, so we can pass alttext with
+    // spaces.
+    var tmp = opts.split(' '); 
+    opts = {};
+    for (var i = 0; i < tmp.length; i++) {
+        if (!tmp[i])
+            continue;
+        var eq = tmp[i].indexOf('=');
+        if (eq == -1)
+            opts[tmp[i]] = bw.value(true);
+        else
+            opts[tmp[i].substr(0, eq)] = bw.value(tmp[i].substr(eq+1));
+    }
+
+    // Add the alternate text
+    if (altx)
+        opts.alttext = bw.value(altx);
+
+    // Add any hard-coded options required to fix problems in the javascript
+    // emulation. 
+    opts.inkspread = bw.value(0);
+    if (needyoffset[elt.sym] && !opts.textxalign && !opts.textyalign &&
+            !opts.alttext && opts.textyoffset === undefined)
+        opts.textyoffset = bw.value(-10);
+
+    var rot  = 'N';
+    var rots = [ 'rotL', 'rotR', 'rotI' ];
+    for (var i = 0; i < rots.length; i++) {
+        if (document.getElementById(rots[i]).checked) {
+            rot = rots[i].charAt(3);
+            break;
+        }
+    }
+    alert(' @@@@@ getting rot'+rot);
+    
+    bw.bitmap(new Bitmap);
+    alert('bw.bitmap'+bw.bitmap());
+    var scl = parseInt(document.getElementById('scale').value, 10) || 2;
+    bw.scale(scl,scl);
+
+    var div = document.getElementById('output');
+    if (div)
+        div.innerHTML = '';
+    alert('getting bw ==='+bw);
+    bw.push(text);
+    bw.push(opts);
+    alert('getting bw 2==='+bw);
+    try {
+        alert('getting elt.sym @@@@'+elt.sym);
+        bw.call(elt.sym);
+        bw.bitmap().show('canvas', rot);
+    } catch(e) {
+        var s = '';
+        if (e.fileName)
+            s += e.fileName + ' ';
+        if (e.lineNumber)
+            s += '[line ' + e.lineNumber + '] ';
+            alert('checking 1');
+        alert(s + (s ? ': ' : '') + e.message);
+        alert('checking 2');
+    }
+    return false;
+}
+</script>
+</head><body>
+<div id="menu">
+<apex:panelGrid columns="2">
+<apex:pageblock id="pgblk1">
+        
+    <apex:panelGrid columns="2">
+        <b> Bar Code: </b> <select id="symbol" style="width:200px"></select>
+    </apex:panelGrid>
+    <br/>
+    <apex:panelGrid columns="2">
+        <b> Bar Text: &nbsp; </b> <input id="symtext" type="text" style="width:195px"/>
+    </apex:panelGrid>
+    <br/>
+    <apex:panelGrid columns="2">
+       <b> Alt Text: &nbsp;&nbsp; </b> <input id="symaltx" type="text" style="width:195px"/>
+    </apex:panelGrid>
+    <br/>
+    <apex:panelGrid columns="2">
+       <b> Options: &nbsp;&nbsp; </b> <input id="symopts" type="text" style="width:195px"/>
+    </apex:panelGrid>
+</apex:pageblock>
+<apex:pageblock id="pgblk2">
+
+    <apex:panelGrid columns="2">
+      <b> Scale: </b> <input type="text" id="scale" value="2">
+        <span class="button up"></span>
+        <span class="button dn"></span>
+        </input>
+    </apex:panelGrid>
+    <br/>
+    <apex:panelGrid columns="5">
+       <b> Rotate: </b>
+        <label for="rotN"><input type="radio" name="rot" value="N" id="rotN" checked="true"/>Normal</label>
+        <label for="rotR"><input type="radio" name="rot" value="R" id="rotR"/>90 CW</label>
+        <label for="rotL"><input type="radio" name="rot" value="L" id="rotL"/>90 CCW</label>
+        <label for="rotI"><input type="radio" name="rot" value="I" id="rotI"/>180</label>
+    </apex:panelGrid>
+    <br/>
+    <apex:panelGrid columns="1">
+       <button onclick="return render();">Show Barcode</button>
+    </apex:panelGrid>
+
+</apex:pageblock>
+</apex:panelGrid>
+</div>
+<canvas id="canvas" width="1" height="1" style="border:1px solid #fff;visibility:hidden"></canvas>
+<div id="output" style="white-space:pre"></div>
+<xmp id="debug" style="white-space:pre"></xmp>
+</body>
+</apex:form>
+</apex:page>

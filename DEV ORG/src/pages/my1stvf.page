@@ -1,0 +1,19 @@
+<apex:page controller="swar" extensions="testclass1" >
+<apex:includeScript value="{!URLFOR($Resource.EUL, 'JQuery.js')}"/>
+  <!-- Begin Default Content REMOVE THIS -->
+  <h1>Congratulations</h1>
+  This is your new Page
+  <apex:form ><b>Name:</b>
+  <apex:inputText value="{!name}" />
+  <br/>
+  <b>External_Id:</b>
+  <apex:inputText value="{!external1}" />
+<br/>
+<b>External2:</b>
+<apex:inputText value="{!external2}" />
+<br/>
+ <apex:commandButton action="{!mymethod}" value="Create new account" />
+
+ </apex:form>
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

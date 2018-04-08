@@ -1,0 +1,14 @@
+<apex:page standardController="Contact">
+<script type="text/javascript">
+var a={!contact.name};
+</script>
+
+    <apex:outputLink value="http://google.com/search">
+
+        Search Google
+
+        <apex:param name="q" value="a"/>
+
+    </apex:outputLink>
+
+</apex:page>

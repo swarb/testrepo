@@ -1,0 +1,29 @@
+<apex:page controller="testing" showHeader="false">
+<apex:form >
+<br/>
+<h1><b>Enter Text:</b></h1><br/>
+
+<apex:inputText value="{!a}">
+First Name &nbsp;
+<apex:actionSupport event="onchange" action="{!func}" rerender="myid"  status="mystatus" oncomplete="alert(1);">
+<apex:param name="par" value="swarnava1"/>
+ </apex:actionSupport>
+</apex:inputText>
+<apex:inputText value="{!b}">
+&nbsp;&nbsp;&nbsp;Last Name
+<apex:actionSupport event="onchange" action="{!func}" rerender="myid"  status="mystatus" oncomplete="abc"/>
+</apex:inputText>
+
+<br/>
+<apex:actionStatus id="mystatus" startText="Updating..." >
+abc
+</apex:actionStatus>
+<br/><br/>
+<apex:outputPanel id="myid">
+<b><i>Your Name is &nbsp;<apex:outputText value="{!a}"/></i></b><br/>
+{!parm}
+</apex:outputPanel>
+<apex:actionRegion >
+</apex:actionRegion>
+</apex:form>
+</apex:page>

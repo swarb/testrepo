@@ -1,0 +1,12 @@
+<apex:page standardcontroller="Account" tabStyle="Contact" >
+<apex:outputText value="{!Account.Name}"></apex:outputText>
+ <apex:form >
+ <apex:inputField value="{!Account.Name}"/>
+ <apex:commandButton value="submit"/>
+ </apex:form>
+ <apex:form >
+ <apex:inputField value="{!Account.Name}"/>
+  <apex:commandButton value="submit"/>
+ </apex:form>
+ 
+</apex:page>

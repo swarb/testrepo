@@ -1,0 +1,49 @@
+<apex:page controller="sf4twitter.TroubleshootingLogController" sidebar="false"
+	title="{!$Label.TWITTER_START_PAGE_TITLE}">
+
+<style>
+	#TroubleshootingHeadWrapper {
+		width: 100%;
+		border-top: 1px solid #FBF1FF;
+	}
+
+	#TroubleshootingHeadWrapper #TroubleshootingOrigin {
+		font-size: 20px;
+		font-weight: bold;
+		float: left;
+		width: 400px;
+	}
+	
+	#TroubleshootingHeadWrapper #Logo {
+		float: right;
+		height: 100px;
+		width: 250px;
+	}
+
+	#MessageWrapper {
+		width: 100%;
+		font-family: helvetica;
+		font-size: 15px;
+		color: #333333;
+		white-space: pre-wrap;
+	}
+	
+	#MessageWrapper hr {
+		color: #FBF1FF;
+	}
+</style>
+
+<div id="TroubleshootingHeadWrapper">
+	<div id="TroubleshootingOrigin">{!filterOriginLabel}</div>
+	<div id="Logo"><apex:image value="{!URLFOR($Resource.sf4twitter__sfsocial, 'resources/icons/Salesforce_Social_Media_Logo.png')}"
+		width="200" height="80"/>
+	</div>
+	<div style="clear:both;"></div>
+</div>
+
+
+<div id="MessageWrapper">
+	<apex:outputText value="{!logContent}"/>
+</div>
+
+</apex:page>

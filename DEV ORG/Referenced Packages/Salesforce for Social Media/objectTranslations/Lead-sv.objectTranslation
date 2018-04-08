@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <label>Facebook bild Url</label>
+        <name>Fcbk_Image_Url__c</name>
+    </fields>
+    <fields>
+        <label>Facebook Foto</label>
+        <name>Fcbk_Picture__c</name>
+    </fields>
+    <fields>
+        <label>Facebbok profil Url</label>
+        <name>Fcbk_Profile_Url__c</name>
+    </fields>
+    <fields>
+        <label>Facebook Användarid</label>
+        <name>Fcbk_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>Facebook användarnamn</label>
+        <name>Fcbk_Username__c</name>
+    </fields>
+    <fields>
+        <help><!-- Click on link to change following status --></help>
+        <label>Följ på Twitter</label>
+        <name>Follow_Status__c</name>
+    </fields>
+    <fields>
+        <label>Ursprung</label>
+        <name>Origin__c</name>
+        <picklistValues>
+            <masterLabel>Facebook</masterLabel>
+            <translation><!-- Facebook --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Twitter</masterLabel>
+            <translation><!-- Twitter --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Twitter Biografi</label>
+        <name>Twitter_Bio__c</name>
+    </fields>
+    <fields>
+        <label>Twitter Skapardatum</label>
+        <name>Twitter_Creation_Date__c</name>
+    </fields>
+    <fields>
+        <label>Twitter följarkonto</label>
+        <name>Twitter_Follower_count__c</name>
+    </fields>
+    <fields>
+        <label>Antal Twitter som jag följer</label>
+        <name>Twitter_Following_count__c</name>
+    </fields>
+    <fields>
+        <label>Twitter bild Url</label>
+        <name>Twitter_Image_Url__c</name>
+    </fields>
+    <fields>
+        <label>Senaste tweet på Twitter</label>
+        <name>Twitter_Last_tweet__c</name>
+    </fields>
+    <fields>
+        <label>Twitter plats</label>
+        <name>Twitter_Location__c</name>
+    </fields>
+    <fields>
+        <label>Twitter foto</label>
+        <name>Twitter_Picture__c</name>
+    </fields>
+    <fields>
+        <label>Twitter statusräkning</label>
+        <name>Twitter_Status_count__c</name>
+    </fields>
+    <fields>
+        <label>Twitter användar-id</label>
+        <name>Twitter_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>Twitter användarnamn</label>
+        <name>Twitter_Username__c</name>
+    </fields>
+    <fields>
+        <label>följd</label>
+        <name>followed__c</name>
+    </fields>
+    <layouts>
+        <layout>SfSocial Lead Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Social Information --></label>
+            <section>Social Information</section>
+        </sections>
+    </layouts>
+    <webLinks>
+        <label>Hämta information om skapare</label>
+        <name>Get_Author_Info_Massive</name>
+    </webLinks>
+    <webLinks>
+        <label>Hämta Twitter-användarnamn</label>
+        <name>Get_Twitter_Username</name>
+    </webLinks>
+    <webLinks>
+        <label>Sök efter Twitter-användarnamn</label>
+        <name>Search_Twitter_Username</name>
+    </webLinks>
+    <webLinks>
+        <label>Uppdatera Twitterinformation</label>
+        <name>Update_Twitter_Information</name>
+    </webLinks>
+</CustomObjectTranslation>

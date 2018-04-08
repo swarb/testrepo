@@ -1,0 +1,8 @@
+<apex:page standardController="Account" extensions="myControllerExtension">
+{!greeting} <p/>
+<apex:form >
+<apex:inputField onmouseover="{!mymethod}" value="{!account.name}"/> <p/>
+<apex:commandButton value="Save" action="{!save}"/>
+{!$CurrentPage.Parameters.id}
+</apex:form>
+</apex:page>

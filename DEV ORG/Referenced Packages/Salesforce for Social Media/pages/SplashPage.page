@@ -1,0 +1,71 @@
+<apex:page controller="sf4twitter.TwitterStartPageController" sidebar="false" showHeader="{!showHeader}"
+    title="{!$Label.TWITTER_START_PAGE_TITLE}">
+
+<apex:includeScript value="{!URLFOR($Resource.sf4twitter__jQueryLibrary)}" />
+<apex:stylesheet value="{!URLFOR($Resource.sf4twitter__sfsocial, 'resources/style.css')}" />
+
+<div id="sf4SocialWrapper">
+
+    <div id="sf4SocialHeader">
+        <apex:image value="{!URLFOR($Resource.sf4twitter__sfsocial, 'resources/header.png')}"/>
+    </div>
+    
+    <div id="sf4SocialContainer">
+
+        <div id="sf4SocialSideBar">
+        
+            <div class="sf4SocialSideBarItem">
+                <h2><apex:image value="{!URLFOR($Resource.sf4twitter__sfsocial, 'resources/icons/setup.png')}" width="22" height="22" /> {!$Label.Navigation}</h2>
+                
+                <p><a href="{!$Page.sf4twitter__TwitterSearchInterface}">{!$Label.Get_more_tweets}</a></p>
+                <p><a href="{!$Page.sf4twitter__TwitterScheduler}">{!$Label.TWITTER_SCHEDULE_SEARCHES}</a></p>
+                <p><a href="/{!$ObjectType.sf4twitter__Twitter_Conversation__c.keyPrefix}/o">{!$Label.Conversations}</a></p>
+                <p><a href="/{!IdFolder}">{!$Label.Analytics}</a></p>
+            </div>
+            
+            <div class="sf4SocialSideBarItem">
+                <h2><apex:image value="{!URLFOR($Resource.sf4twitter__sfsocial, 'resources/icons/Twitter_32x32.png')}" width="22" height="22" /> Twitter</h2>
+                
+                <p><a href="/{!$ObjectType.sf4twitter__Twitter_Account__c.keyPrefix}/o">{!$Label.Twitter_Accounts}</a></p>
+                <p><a href="/{!$ObjectType.sf4twitter__Twitter_Search__c.keyPrefix}/o">{!$Label.TWITTER_SCHEDULER_PAGE_TITLE_KEY}</a></p>
+                <apex:outputPanel rendered="{!$ObjectType.Document.Accessible}">
+                	<p><a href="{!$Page.sf4twitter__TroubleshootingLog}?f={!originTwitter}">{!$Label.ORIGIN_TWITTER_TROUBLESHOOTING_LOG}</a></p>
+                </apex:outputPanel>
+            </div>
+            
+            <div class="sf4SocialSideBarItem">
+                <h2><apex:image value="{!URLFOR($Resource.sf4twitter__sfsocial, 'resources/icons/FaceBook_32x32.png')}" width="22" height="22" /> Facebook</h2>
+                
+                <p><a href="/{!$ObjectType.sf4twitter__Fcbk_Page__c.keyPrefix}/o">{!$Label.FACEBOOK_PAGE_TITLE}</a></p>
+                <p><a href="/{!$ObjectType.sf4twitter__Fcbk_User__c.keyPrefix}/o">{!$Label.Facebook_Users}</a></p>
+                <apex:outputPanel rendered="{!$ObjectType.Document.Accessible}">
+                	<p><a href="{!$Page.sf4twitter__TroubleshootingLog}?f={!originFacebook}">{!$Label.TROUBLESHOOTING_LOG}</a></p>
+                </apex:outputPanel>
+            </div>
+            
+        
+        </div>
+    
+ 		<div id="sf4SocialBody">
+ 		
+ 			<apex:outputPanel rendered="{!showSetupWarning}">
+ 			<p class="errorMsg" style="margin-left: 47px;">
+ 			<apex:outputText escape="false" value="{!$Label.SETUP_WARNING_MESSAGE}" >
+ 				<apex:param value="{!$Page.sf4twitter__Setup}"/>
+ 			</apex:outputText>
+		    </p>
+		    </apex:outputPanel>
+		    
+        	<c:TwitterSimpleOutboundTweet />
+	         
+	         <div id="sf4SocialBodyBottom">
+	             <p>{!PACKAGE_VERSION}</p>
+	             <p><a href="{!$Page.sf4twitter__Setup}">{!$Label.Link_To_Setup_Label}</a></p>
+	             <p><a target="_blank" href="http://appexchange.salesforce.com/listingDetail?listingId=a0N30000003HpEQEA0">{!$Label.TWITTER_SETUP_GUIDE}</a></p>
+	         </div>
+	    </div>       
+    </div>
+    
+</div>
+
+</apex:page>

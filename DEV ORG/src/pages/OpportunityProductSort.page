@@ -1,0 +1,153 @@
+<apex:page controller="OpportunityProductSort" sidebar="false" showHeader="salse" >
+<meta charset="utf-8"/>
+<title>Sorting of Opportunity Products</title>
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css"></link>
+<script src="https://code.jquery.com/jquery-1.9.1.js"></script>
+<script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script> 
+<apex:includeScript value="{!$Resource.TableSortJs}"/>
+<style>
+#sortable { list-style-type: none; margin: 0; padding: 0; width: 60%; }
+#sortable li { margin: 0 3px 3px 3px; padding: 0.4em; padding-left: 1.5em; font-size: 1.4em; height: 18px; }
+#sortable li span { position: absolute; margin-left: -1.3em; }
+</style>
+<script>
+var fixHelperModified = function(e, tr) {
+    var $originals = tr.children();
+    var $helper = tr.clone();
+    $helper.children().each(function(index) {
+        $(this).width($originals.eq(index).width())
+    });
+    return $helper;
+},
+    updateIndex = function(e, ui) {
+        $('td.index', ui.item.parent()).each(function (i) {
+            $(this).html(i + 1);
+        });
+    };
+jQuery(document).ready(function(){
+$("#sort tbody").sortable({
+    helper: fixHelperModified,
+    stop: updateIndex
+}).disableSelection();
+//$("#sort").tablesorter();//for testing
+});
+
+function getsortedids(){
+var size=jQuery('#container').children('tr').length;
+var a='';
+jQuery('#container').children('tr').each(function(i){
+//console.log(i);
+//console.log(jQuery(this).attr('id'));
+if((i+1)<size)
+a+=jQuery(this).attr('id').substring(0,15)+',';
+else
+a+=jQuery(this).attr('id').substring(0,15);
+}
+)
+;
+//console.log(a);
+return a;
+}
+//method for save the sorted values
+function Savesorted(){
+// get confirmation token and set webform field
+
+confirmationtoken="{!$CurrentPage.parameters.conftoc}";
+console.log('abcd-'+confirmationtoken);
+//need to post a form to /oppitm/lineitemsort.jsp because this is how SFDC
+//does it but there is not direct API to do the sorting (thus the awkward workaround)
+var form = document.createElement("form");
+form.setAttribute("method", "post");
+form.setAttribute("action", "{!sfbaseurl}/oppitm/lineitemsort.jsp");
+
+var hiddenField = document.createElement("input");
+hiddenField.setAttribute("type", 'hidden');
+hiddenField.setAttribute("name", '_CONFIRMATIONTOKEN');
+hiddenField.setAttribute("value", confirmationtoken);
+form.appendChild(hiddenField);
+
+var oppID = '{!$CurrentPage.parameters.id}';
+
+//call the apex web service to get the OLIs in the desired sort order for this opp
+//var result = '00k9000000AFCMZAA5,00k90000009BVjzAAG,00k9000000AFCMbAAP,00k9000000AFCMaAAP';
+  var result = getsortedids();
+console.log('result-'+result);
+//set the id of the request to the opportunity ID
+var hiddenField = document.createElement("input");
+hiddenField.setAttribute("type", 'hidden');
+hiddenField.setAttribute("name", 'id');
+hiddenField.setAttribute("value", '{!$CurrentPage.parameters.id}');
+form.appendChild(hiddenField);
+
+//the name of the sorted OLI list that the JSP is expecting is "duel0"
+var hiddenField = document.createElement("input");
+hiddenField.setAttribute("type", 'hidden');
+hiddenField.setAttribute("name", 'duel0');
+hiddenField.setAttribute("value", result);
+form.appendChild(hiddenField);
+
+var hiddenField = document.createElement("input");
+hiddenField.setAttribute("type", 'hidden');
+hiddenField.setAttribute("name", 'retURL');
+hiddenField.setAttribute("value", '{!sfbaseurl}/{!$CurrentPage.parameters.id}');
+form.appendChild(hiddenField);
+
+var hiddenField = document.createElement("input");
+hiddenField.setAttribute("type", 'hidden');
+hiddenField.setAttribute("name", 'cancelURL');
+hiddenField.setAttribute("value", '{!sfbaseurl}/{!$CurrentPage.parameters.id}');
+form.appendChild(hiddenField);
+
+var hiddenField = document.createElement("input");
+hiddenField.setAttribute("type", 'hidden');
+hiddenField.setAttribute("name", 'save_new_url');
+hiddenField.setAttribute("value", '{!sfbaseurl}/oppitm/lineitemsort.jsp');
+form.appendChild(hiddenField);
+
+//set to save
+var hiddenField = document.createElement("input");
+hiddenField.setAttribute("type", 'hidden');
+hiddenField.setAttribute("name", 'save');
+hiddenField.setAttribute("value", 'Enregistrer');
+form.appendChild(hiddenField);
+
+//need to do this so it works in IE
+document.body.appendChild(form);
+form.submit();
+
+}
+
+function backurl(){
+location.replace("{!redirectionurl}");
+}
+</script>
+<body>
+<h1>Drag and Drop to rearange Rows</h1>
+<table id="sort" class="grid" border="1">
+    <thead>
+       <!-- <tr><th class="index">No.</th><th>Year</th><th>Title</th><th>Grade</th></tr>-->       
+    <tr>
+    <apex:repeat value="{!fields}" var="f">
+        <th>{!f.label}</th>
+    </apex:repeat>
+    </tr>
+    </thead>
+    <tbody id="container">
+       <!-- <tr><td class="index">1</td><td>1969</td><td>Slaughterhouse-Five</td><td>A+</td></tr>
+        <tr><td class="index">2</td><td>1952</td><td>Player Piano</td><td>B</td></tr>
+        <tr><td class="index">3</td><td>1963</td><td>Cat's Cradle</td><td>A+</td></tr>
+        <tr><td class="index">4</td><td>1973</td><td>Breakfast of Champions</td><td>C</td></tr>
+        <tr><td class="index">5</td><td>1965</td><td>God Bless You, Mr. Rosewater</td><td>A</td></tr>-->
+            <apex:repeat value="{!lso}" var="rItem">
+                <tr id="{!rItem.Id}">
+                    <apex:repeat value="{!fields}" var="f">
+                        <td>{!rItem['PricebookEntry.Product2.'+f.fieldPath]}</td>
+                    </apex:repeat>
+                </tr>
+        </apex:repeat>
+    </tbody>
+</table>
+     <input type="button" onclick="Savesorted();" value="Save the sorted value"/>
+     <input type="button" onclick="backurl();" value="Cancel"/>       
+</body>
+</apex:page>

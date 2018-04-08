@@ -1,0 +1,6 @@
+<apex:page standardController="Account" recordSetVar="case" showheader="false">
+    <apex:dataList var="a" value="{!case}" >
+     {!a.ID} <br/>
+     {!a.Name}
+    </apex:dataList>
+    </apex:page>

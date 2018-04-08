@@ -1,0 +1,43 @@
+<apex:page controller="sf4twitter.TwitterStartPageController" cache="false"
+    title="{!$Label.TWITTER_START_PAGE_TITLE}">
+
+<apex:includeScript value="{!URLFOR($Resource.sf4twitter__jQueryLibrary)}" />
+<apex:stylesheet value="{!URLFOR($Resource.sf4twitter__sfsocial, 'resources/style.css')}" />
+
+<style>
+    #sf4SocialContainer{
+        width: 600px;
+    }
+</style>
+
+<div id="sf4SocialWrapper">
+
+    <div id="sf4SocialHeader">
+        <apex:image value="{!URLFOR($Resource.sf4twitter__sfsocial, 'resources/header.png')}"/>
+    </div>
+    
+    <div id="sf4SocialContainer">
+    
+		<div id="sf4SocialBody">
+		
+			<apex:outputPanel rendered="{!showSetupWarning}">
+	 			<p class="errorMsg" style="margin-left: 47px;">
+	 			<apex:outputText escape="false" value="{!$Label.SETUP_WARNING_MESSAGE}" >
+	 				<apex:param value="{!$Page.sf4twitter__Setup}"/>
+	 			</apex:outputText>
+			    </p>
+		    </apex:outputPanel>
+		     
+			<c:TwitterSimpleOutboundTweet />
+	         
+	         <div id="sf4SocialBodyBottom">
+	             <p><a href="{!$Page.SplashPage}">{!$Label.Administration}</a></p>
+	             <p><a target="_blank" href="http://appexchange.salesforce.com/listingDetail?listingId=a0N30000003HpEQEA0">{!$Label.TWITTER_SETUP_GUIDE}</a></p>
+	         </div>
+	    </div>
+        
+    </div>
+
+</div>
+
+</apex:page>

@@ -1,0 +1,7 @@
+<apex:page controller="selecttest">
+<apex:form >
+ <apex:selectList size="1" id="countryList" onChange="setCountry(this.value);" value="{!selectedCountry}">
+    <apex:selectOptions value="{!items}"/>
+    </apex:selectList>
+    </apex:form>
+</apex:page>

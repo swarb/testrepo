@@ -1,0 +1,7 @@
+<apex:page controller="sf4twitter.FcbkFeaturesController" action="{!init}" >
+
+<c:TwitterErrorMessage msgTitle="{!$Label.TWITTER_ERROR}"
+	msg="{!errorMessage}" retUrl="{!retUrl}"
+	rendered="{!NOT(ISBLANK(errorMessage))}" />
+	
+</apex:page>

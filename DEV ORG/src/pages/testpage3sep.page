@@ -1,0 +1,10 @@
+<apex:page controller="sep3controller">
+
+ <apex:dataTable value="{!a}" var="abc">
+ <apex:column value="{!abc.Id}" title="Id" headerValue="Ids"/>
+  <apex:column value="{!abc.Name}" title="Name" headerValue="Names"/>
+
+ </apex:dataTable>
+ 
+ 
+</apex:page>

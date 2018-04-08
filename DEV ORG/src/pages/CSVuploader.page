@@ -1,0 +1,11 @@
+<apex:page sidebar="false" controller="CSVFileUploader">
+    <apex:pagemessages />
+   <apex:form >
+   <br/><br/><br/>
+   <center>
+           
+          <b>Please Upload Your CSV File</b>&nbsp;&nbsp;&nbsp;
+          <apex:inputFile value="{!contentFile}" filename="{!FileName}" accept="csv"  /> <apex:commandButton action="{!ReadFile}" value="Upload File" id="theButton" style="width:70px;"/>          
+   </center> 
+   </apex:form>
+ </apex:page>

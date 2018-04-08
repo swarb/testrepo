@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <article>Definite</article>
+        <plural>false</plural>
+        <value>Twitter-sökningen</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>false</plural>
+        <value>Twitter-sökning</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>false</plural>
+        <value>Twitter-sökning</value>
+    </caseValues>
+    <caseValues>
+        <article>Definite</article>
+        <plural>true</plural>
+        <value>Twitter-sökningarna</value>
+    </caseValues>
+    <caseValues>
+        <article>Indefinite</article>
+        <plural>true</plural>
+        <value>Twitter-sökningar</value>
+    </caseValues>
+    <caseValues>
+        <article>None</article>
+        <plural>true</plural>
+        <value>Twitter-sökningar</value>
+    </caseValues>
+    <fields>
+        <label>Aktiv</label>
+        <name>Active__c</name>
+    </fields>
+    <fields>
+        <label>Kampanj</label>
+        <name>Campaign__c</name>
+        <relationshipLabel>Twitter-sökningar</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Senaste Tweet-id</label>
+        <name>Last_Tweet_Ids__c</name>
+    </fields>
+    <fields>
+        <label>Delvis Twitter maxsökning</label>
+        <name>Partial_Twitter_Max_Search__c</name>
+    </fields>
+    <fields>
+        <label>Resultat per sida</label>
+        <name>Results_Per_Page__c</name>
+    </fields>
+    <fields>
+        <label>Sök tweets ID-förskjutande</label>
+        <name>Search_Tweet_Id_Offset__c</name>
+    </fields>
+    <fields>
+        <label>ID-gräns för tweets</label>
+        <name>Tweet_Id_Threshold__c</name>
+    </fields>
+    <fields>
+        <help><!-- Search information in http://search.twitter.com/operators --></help>
+        <label>Twitter nyckelordsökning</label>
+        <name>Twitter_Keyword_Search__c</name>
+    </fields>
+    <fields>
+        <label>Twitter maxsökning</label>
+        <name>Twitter_Max_Search__c</name>
+    </fields>
+    <fields>
+        <label>Okända Twitter-användarnamn</label>
+        <name>Unknown_Twitter_Usernames__c</name>
+        <picklistValues>
+            <masterLabel>Create Contact</masterLabel>
+            <translation><!-- Create Contact --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Lead</masterLabel>
+            <translation><!-- Create Lead --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Create Person Account</masterLabel>
+            <translation><!-- Create Person Account --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Do nothing</masterLabel>
+            <translation><!-- Do nothing --></translation>
+        </picklistValues>
+    </fields>
+    <fields>
+        <label>Order</label>
+        <name>Weight__c</name>
+    </fields>
+    <fields>
+        <help><!-- When searching for tweets previous results are filtered out from the new results, by turning this option &apos;On&apos; the search will bring all results up to the maximum allowed by twitter. --></help>
+        <label>Hämta max tweets inkl. föregående resultat</label>
+        <name>ignore_maxid__c</name>
+    </fields>
+    <gender>Neuter</gender>
+    <layouts>
+        <layout>Twitter Search Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+        <sections>
+            <label><!-- Search options --></label>
+            <section>Search options</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Twitter söknamn</nameFieldLabel>
+    <validationRules>
+        <errorMessage>Måste ha &apos;Skapa kontakt&apos; eller &apos;Skapa lead&apos; valt för fältet &apos;Okänt Twitter-användarnamn&apos;</errorMessage>
+        <name>Create_contact_or_lead</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Antal resultat per sida måste vara färre än 100</errorMessage>
+        <name>Max_results_per_page</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Ordningen får inte vara negativ.</errorMessage>
+        <name>Non_negative_search_orders</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Ogiltigt nummer</errorMessage>
+        <name>Search_Tweet_Id_Offset_must_be_a_number</name>
+    </validationRules>
+    <webLinks>
+        <label>Schemalägg Twitter-sökningar</label>
+        <name>Schedule_Twitter_Searches</name>
+    </webLinks>
+</CustomObjectTranslation>

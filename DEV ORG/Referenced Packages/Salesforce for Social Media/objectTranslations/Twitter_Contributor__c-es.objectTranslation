@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObjectTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+    <caseValues>
+        <plural>false</plural>
+        <value>Colaborador de Twitter</value>
+    </caseValues>
+    <caseValues>
+        <plural>true</plural>
+        <value>Colaboradores de Twitter</value>
+    </caseValues>
+    <fields>
+        <label>Autenticación</label>
+        <name>Authentication__c</name>
+    </fields>
+    <fields>
+        <label>Cuenta principal</label>
+        <name>Main_Account__c</name>
+    </fields>
+    <fields>
+        <label>Secreto de OAuth</label>
+        <name>OAuth_Secret__c</name>
+    </fields>
+    <fields>
+        <label>Testigo de OAuth</label>
+        <name>OAuth_Token__c</name>
+    </fields>
+    <fields>
+        <label>Cuenta de Twitter</label>
+        <name>TwitterAccount__c</name>
+        <relationshipLabel>Colaboradores de Twitter</relationshipLabel>
+    </fields>
+    <fields>
+        <label>ID de usuario de Twitter</label>
+        <name>Twitter_User_Id__c</name>
+    </fields>
+    <fields>
+        <label>Usuario</label>
+        <name>User__c</name>
+        <relationshipLabel>Colaboradores de Twitter</relationshipLabel>
+    </fields>
+    <fields>
+        <label>Nombre de usuario</label>
+        <name>Username__c</name>
+    </fields>
+    <fields>
+        <label>Validado</label>
+        <name>Valid__c</name>
+    </fields>
+    <gender>Masculine</gender>
+    <layouts>
+        <layout>Twitter Contributor Layout</layout>
+        <sections>
+            <label><!-- Custom Links --></label>
+            <section>Custom Links</section>
+        </sections>
+    </layouts>
+    <nameFieldLabel>Nombre del colaborador de Twitter</nameFieldLabel>
+    <validationRules>
+        <errorMessage>Debe introducir un valor.</errorMessage>
+        <name>Twitter_Account_Needed</name>
+    </validationRules>
+    <validationRules>
+        <errorMessage>Nombre de usuario no válido</errorMessage>
+        <name>Username_different_to_main_account</name>
+    </validationRules>
+    <webLinks>
+        <label>Agregar colaborador</label>
+        <name>Add_Contributor</name>
+    </webLinks>
+</CustomObjectTranslation>

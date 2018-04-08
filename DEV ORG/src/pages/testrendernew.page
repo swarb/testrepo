@@ -1,0 +1,18 @@
+<apex:page controller="MyController">
+<apex:form >
+<apex:pageBlock title="Display Opportunity">
+<apex:dataList value="{!acctsinfo}" var="acc" onclick="document.getElementById({!$Component.id1}).innerHTML('PRESSED ME');">
+<apex:commandLink action="{!acctclick}" rerender="oppordetail">
+<apex:outputText value="{!acc.Name}"/>
+<apex:param name="id" value="{!acc.id}" assignTo="{!selectedaccount}"/>
+</apex:commandLink>
+</apex:dataList>
+<apex:outputPanel id="oppordetail">
+<apex:repeat value="{!oppinfo}" var="opp">
+<p>{!opp.Name}</p></apex:repeat>
+</apex:outputpanel>
+<apex:outputPanel id="id1">
+</apex:outputPanel>
+</apex:pageBlock>
+</apex:form>
+</apex:page>

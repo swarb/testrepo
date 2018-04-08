@@ -1,0 +1,15 @@
+<apex:page standardController="customer__c" >
+<html>
+<body>
+  
+  
+  <img src="http://maps.google.com/maps/api/staticmap?size=512x512&maptype=roadmap
+
+\
+&markers=size:mid|color:red|{!customer__c.address__c}&sensor=false" width="1000" hight="700"/>        
+
+</body>
+
+</html>
+
+</apex:page>

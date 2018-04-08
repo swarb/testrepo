@@ -1,0 +1,9 @@
+<apex:page standardController="Contact" extensions="ContactExtention">
+  <apex:pageBlock >
+      <apex:pageblocktable value="{!acccr}" var="item">
+          <apex:column value="{!item.Account.Name}" headerValue="Account Name"/>
+          <apex:column value="{!item.Role}" headerValue="Role"/>
+          <apex:column value="{!item.IsPrimary}" headerValue="Primary"/>
+      </apex:pageblocktable>
+  </apex:pageBlock>
+</apex:page>

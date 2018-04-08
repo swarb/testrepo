@@ -1,0 +1,7 @@
+<apex:page >
+<apex:form id="mainForm"/>
+<!-- panel displaying error messages -->
+<apex:outputPanel id="messages">
+<apex:messages style="font-weight:bold; color:red;"/>
+</apex:outputPanel>
+</apex:page>

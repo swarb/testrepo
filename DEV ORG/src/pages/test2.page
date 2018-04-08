@@ -1,0 +1,8 @@
+<apex:page standardController="account">
+  <html>
+  <body>
+  <h1>Congratulation{!account.name}</h1>
+  This is your new Page
+  </body>
+  </html>
+</apex:page>

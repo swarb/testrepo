@@ -1,0 +1,38 @@
+<apex:page standardController="Account" >
+<apex:form >
+<style>
+ 
+  .container
+ 
+ {
+ 
+overflow:auto; 
+ 
+ height:100px;   
+}
+ .headerRow .headerStyle
+ 
+{
+ color: #CC0000 !important;
+  position:relative;
+TOP: expression(this.offsetParent.scrollTop-2);        
+ }
+ </style>
+<apex:pageBlock title="mypage">
+ <apex:pageBlockSection columns="3">
+ <apex:outputPanel layout="block" id="thePanel" styleClass="container">
+ <apex:PageBlockTable value="{!Account.Name}" width="100%" var="jjk"></apex:PageBlockTable> 
+ </apex:outputPanel>
+ <apex:outputPanel layout="block" id="thePanel1">
+ <apex:detail />
+ </apex:outputPanel>
+ 
+ <apex:outputPanel layout="block" id="thePanel2">
+ <apex:PageBlockTable value="{!Account.Name}" width="100%" var="jjk2"></apex:PageBlockTable> 
+ </apex:outputPanel>
+ </apex:pageBlockSection>
+ 
+ 
+ </apex:pageBlock>
+ </apex:form>
+</apex:page>

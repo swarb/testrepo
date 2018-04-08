@@ -1,0 +1,6 @@
+<apex:page standardController="Account">
+It is worth:
+<apex:outputText value="{0, number, ,###}">
+       <apex:param value="{!FLOOR(Account.AnnualRevenue)}" />
+ </apex:outputText>
+</apex:page>

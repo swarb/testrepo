@@ -1,0 +1,6 @@
+<apex:page standardController="customer__c" >
+  <!-- Begin Default Content REMOVE THIS -->
+
+{!customer__c.address__c}
+  <!-- End Default Content REMOVE THIS -->
+</apex:page>

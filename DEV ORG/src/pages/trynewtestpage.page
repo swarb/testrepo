@@ -1,0 +1,18 @@
+<apex:Page controller="trynewtest">
+<script>
+var abc='{!Name}';
+if(abc=="swarebhatta")
+alert("swarebhatta");
+</script>
+<apex:Form >
+<apex:PageBlock >
+
+  <apex:PageBlocksection title="Display Name">
+ First Name:<p/><apex:inputText value="{!FirstName}"/>
+ Last Name:<p/><apex:inputText value="{!LastName}"/>
+ <apex:outputText value="{!Name}"/>
+ </apex:PageBlocksection>
+  </apex:PageBlock>
+  <apex:commandButton value="NAME" action="{!Name}"></apex:commandButton>
+  </apex:Form>
+ </apex:Page>

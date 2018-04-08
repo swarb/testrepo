@@ -1,0 +1,10 @@
+<apex:page controller="testclass1" >
+<apex:form >
+ <apex:outputText value="{!s}" /><br/>
+ <apex:outputText value="{!s1}" /><br/>
+ <apex:outputText value="{!s2}" /><br/>
+ 
+<apex:outputText value="{!a}" />
+<apex:commandLink value="refresh"/>
+</apex:form>
+</apex:page>

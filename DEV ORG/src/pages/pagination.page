@@ -1,0 +1,37 @@
+<apex:page controller="opportunityList2Con" showHeader="false" sidebar="false">
+<style>
+.red
+{font-size:1.5em;
+color:red;
+background-color:yellow;
+}
+</style>
+{!intialize}
+    <apex:pageBlock id="id2" >
+        <apex:pageBlockTable value="{!opportunities}" var="o">
+            <apex:column value="{!o.Name}"/>
+            <apex:column value="{!o.CloseDate}"/>
+        </apex:pageBlockTable>       
+    </apex:pageBlock>
+    <apex:form id="id1" >
+        <apex:commandLink action="{!first}" value="first page" reRender="id1,id2" status="" oncomplete=""/>&nbsp;&nbsp;
+         <apex:commandLink action="{!next}" value="next page" rendered="{!hasNext}" reRender="id2,id1"/>&nbsp;&nbsp;
+         <apex:commandLink action="{!gotopage}" value="{!pagenumber-2}" reRender="id1,id2" rendered="{!pagenumber-2>0}">
+         <apex:param value="{!pagenumber-2}" name="pagename"/> 
+         </apex:commandlink>&nbsp;&nbsp;
+         <apex:commandLink action="{!gotopage}" value="{!pagenumber-1}" reRender="id1,id2" rendered="{!pagenumber-1>0}">
+         <apex:param value="{!pagenumber-1}" name="pagename"/> 
+         </apex:commandlink>&nbsp;&nbsp;
+         <apex:outputText value="{!pagenumber}"  styleClass="red"  >
+         <apex:param value="{!pagenumber}" name="pagename"/> 
+         </apex:outputText>&nbsp;&nbsp;
+         <apex:commandLink action="{!gotopage}" value="{!pagenumber+1}" reRender="id1,id2" rendered="{!pagenumber+1<=c}">
+         <apex:param value="{!pagenumber+1}" name="pagename"/> 
+         </apex:commandlink>&nbsp;&nbsp;
+         <apex:commandLink action="{!gotopage}" value="{!pagenumber+2}" reRender="id1,id2" rendered="{!pagenumber+2<=c}">
+         <apex:param value="{!pagenumber+2}" name="pagename"/> 
+         </apex:commandlink>&nbsp;&nbsp;
+          <apex:commandLink action="{!previous}" value="previous page" rendered="{!hasPrevious}" reRender="id1,id2" />&nbsp;&nbsp;
+           <apex:commandLink action="{!last}" value="last page" reRender="id1,id2" />
+        </apex:form>
+</apex:page>

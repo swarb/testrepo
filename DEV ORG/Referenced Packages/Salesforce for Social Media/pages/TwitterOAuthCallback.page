@@ -1,0 +1,8 @@
+<apex:page controller="sf4twitter.TwitterOAuthController"
+	action="{!returnFromTwitter}">
+
+	<c:TwitterErrorMessage msgTitle="{!$Label.TWITTER_ERROR}"
+		msg="{!output}" retUrl="{!retUrl}"
+		rendered="{!actionResult == 'Error'}" />
+
+</apex:page>

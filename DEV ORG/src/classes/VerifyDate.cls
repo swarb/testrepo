@@ -10,7 +10,7 @@ public class VerifyDate {
         }
     }
     
-    //git comment
+    //git comment1
     
     //method to check if date2 is within the next 30 days of date1
     private static Boolean DateWithin30Days(Date date1, Date date2) {
